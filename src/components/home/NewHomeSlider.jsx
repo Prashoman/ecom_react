@@ -9,6 +9,7 @@ import Slider3 from '../../asset/images/slider3.jpg'
 
  class NewHomeSlider extends Component {
   render() {
+    
     var settings = {
         dots: true,
         infinite: true,
@@ -46,6 +47,18 @@ import Slider3 from '../../asset/images/slider3.jpg'
           }
         ]
       };
+      const data = this.props.Data
+      
+      const SliderList = data.map((datalist,i)=>{
+      //  console.log(datalist)
+       return(
+        <div key={i.toString()}>
+        <img className="slider-img" src={datalist.image} />
+ </div>
+       )
+      })
+      
+      
 
 
    return (
@@ -53,16 +66,9 @@ import Slider3 from '../../asset/images/slider3.jpg'
 
 
 <Slider {...settings}>
-   <div>
-    <img className="slider-img" src={Slider1} />
-   </div>
-   <div>
-   <img className="slider-img" src={Slider2} />
-   </div>
-   <div>
-   <img className="slider-img" src={Slider3} />
-   </div>
-
+   
+   
+{SliderList}
  </Slider>
 
 

@@ -6,6 +6,16 @@
   static ContactUs = this.BaseUrl+'contact-us';
   static AllfooterSite = this.BaseUrl+'siteinfo';
   static CategoryDetails = this.BaseUrl+'allcategory';
+  static AllProductremark (Remark){
+    return this.BaseUrl+'productlistbyremark/'+Remark;
+  }
+  static AllProductCategory (category){
+    return this.BaseUrl+"productlistbycategory/"+category;
+  }
+  static AllProductSubcategory(category, subcategory){
+    return this.BaseUrl+'productlistbysubcategory/'+category+'/'+subcategory;
+  }
+  static AllSlider = this.BaseUrl+'allslider';
 }
 
 export default ApiUrl

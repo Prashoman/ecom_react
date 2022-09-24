@@ -15,7 +15,7 @@ import Faverate from '../Fevarates/Faverate'
   render() {
     return (
       <Fragment>
-        <div className="Desktop">
+                <div className="Desktop">
                     <NevMenudesktop/>
                     
                 </div>
