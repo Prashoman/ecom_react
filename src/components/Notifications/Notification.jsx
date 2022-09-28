@@ -1,100 +1,101 @@
 import React, { Component, Fragment } from 'react'
 import { Container,Row,Col, Card,Button,Modal } from 'react-bootstrap'
+import axios from 'axios';
+import ApiUrl from '../../Api/ApiUrl';
 
  class Notification extends Component {
     constructor(){
         super();
         this.state={
              show:false,
+             notification : [],
+             Notificationtitle : '',
+             Notificationdescript : '',
+             Notificationdate : ''
         }
+   }
+   componentDidMount(){
+    axios.get(ApiUrl.Notificaton).then(response => {
+    
+        this.setState({notification : response.data});
+        //console.log(response.data)
+        
+        })
+        .catch(function (error) {
+        
+        })
    }
 
     handleClose = () =>{
         this.setState({ show:false})
     };  
 
-    handleShow = () => {
+    handleShow = (e) => {
          this.setState({ show:true })
+         let Notidate = e.target.getAttribute('data-date');
+         let Notititle = e.target.getAttribute('data-title');
+         let Notimessage = e.target.getAttribute('date-descript');
+         this.setState({
+          Notificationtitle : Notititle ,
+             Notificationdescript : Notimessage,
+             Notificationdate : Notidate
+         })
     }; 
 
   render() {
+    const allNotification = this.state.notification
+    const NotificationAll = allNotification.map((Notif, i)=>{
+
+        
+            if(Notif.status == 1){
+                return(
+                <Col className=" p-1 " md={6} lg={6} sm={12} xs={12}>
+            <Card  className="notification-card">
+                <Card.Body>
+                    <h6> {Notif.tittle}</h6>
+                    <p className="py-1  px-0 text-primary m-0"><i className="fa  fa-bell"></i>   Date: {Notif.date} | Status: Unread</p>
+                    <Button onClick={this.handleShow} data-title ={Notif.tittle} data-date = {Notif.date}  
+                       date-descript ={Notif.description}  className="btn btn-danger">Details </Button> 
+                </Card.Body>
+            </Card>
+            </Col>
+            )
+            }else{
+                return(
+                    <Col className=" p-1 " md={6} lg={6} sm={12} xs={12}>
+                <Card  className="notification-card">
+                    <Card.Body>
+                        <h6> {Notif.tittle}</h6>
+                        <p className="py-1  px-0 text-primary m-0"><i className="fa  fa-bell"></i>   Date: {Notif.date} | Status: read</p>
+                        <Button onClick={this.handleShow} data-title ={Notif.tittle} data-date = {Notif.date}  
+                       date-descript ={Notif.description}  className="btn btn-danger">Details </Button>
+                    </Card.Body>
+                </Card>
+                </Col>
+                )
+            }
+            
+        
+    })
     return (
       <Fragment>
          <Container className="TopSection">
     <Row>
-        <Col className=" p-1 " md={6} lg={6} sm={12} xs={12}>
-            <Card onClick={this.handleShow} className="notification-card">
-                <Card.Body>
-                    <h6> Lorem Ipsum is simply dummy text of the printing</h6>
-                    <p className="py-1  px-0 text-primary m-0"><i className="fa  fa-bell"></i>   Date: 22/12/2010 | Status: Unread</p>
-                </Card.Body>
-            </Card>
-        </Col>
-
-        <Col className=" p-1 " md={6} lg={6} sm={12} xs={12}>
-            <Card onClick={this.handleShow} className="notification-card">
-                <Card.Body>
-                    <h6> Lorem Ipsum is simply dummy text of the printing</h6>
-                    <p className="py-1   px-0 text-primary m-0"><i className="fa  fa-bell"></i>   Date: 22/12/2010 | Status: Unread</p>
-                </Card.Body>
-            </Card>
-        </Col>
-
-        <Col className="p-1" md={6} lg={6} sm={12} xs={12}>
-            <Card  className="notification-card">
-                <Card.Body>
-                    <h6> Lorem Ipsum is simply dummy text of the printing</h6>
-                    <p className="py-1  px-0 text-success m-0"><i className="fa  fa-bell"></i>   Date: 22/12/2010 | Status: Read</p>
-                </Card.Body>
-            </Card>
-
-        </Col>
-
-        <Col className="p-1" md={6} lg={6} sm={12} xs={12}>
-
-            <Card className="notification-card">
-                <Card.Body>
-                    <h5> Lorem Ipsum is simply dummy text of the printing</h5>
-                    <p className="py-1  px-0 text-success m-0"><i className="fa fa-bell"></i>   Date: 22/12/2010 | Status: Read</p>
-                </Card.Body>
-            </Card>
-
-        </Col>
-
-        <Col className="p-1" md={6} lg={6} sm={12} xs={12}>
-
-            <Card className="notification-card">
-                <Card.Body>
-                    <h6> Lorem Ipsum is simply dummy text of the printing</h6>
-                    <p className="py-1  px-0 text-success m-0"><i className="fa  fa-bell"></i>   Date: 22/12/2010 | Status: Read</p>
-                </Card.Body>
-            </Card>
-
-        </Col>
-
-        <Col className="p-1" md={6} lg={6} sm={12} xs={12}>
-
-            <Card className="notification-card">
-                <Card.Body>
-                    <h6> Lorem Ipsum is simply dummy text of the printing</h6>
-                    <p className="py-1 px-0 text-success m-0"><i className="fa  fa-bell"></i>   Date: 22/12/2010 | Status: Read</p>
-                </Card.Body>
-            </Card>
-
-        </Col>
-
+        
+        {NotificationAll}
+       
     </Row>
 </Container>
 
 
 <Modal show={this.state.show} onHide={this.handleClose}>
         <Modal.Header closeButton>
-           <h6><i className="fa fa-bell"></i> Date:11/05/2021</h6>
+           <h6><i className="fa fa-bell"></i> {this.state.Notificationdate}</h6>
         </Modal.Header>
         <Modal.Body>
-             <h6>Woohoo, you're reading this text in a modal!</h6>
+             <h6>{this.state.Notificationtitle}</h6>
              <p>
-             Each course has been hand-tailored to teach a specific skill. I hope you agree! Whether you’re trying to learn a new skill from scratch or want to refresh your memory on something you’ve learned in the past, you’ve come to the right place.
+             {this.state.Notificationdescript}
              </p>
 
 

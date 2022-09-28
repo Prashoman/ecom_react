@@ -17,7 +17,7 @@ import axios from 'axios'
   .then(response => {
     
    this.setState({Slider :response.data });
-    console.log(this.state.Slider)
+    //console.log(this.state.Slider)
   })
   .catch(function (error) {
     

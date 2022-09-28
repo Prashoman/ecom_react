@@ -16,6 +16,13 @@
     return this.BaseUrl+'productlistbysubcategory/'+category+'/'+subcategory;
   }
   static AllSlider = this.BaseUrl+'allslider';
+  static ProductDetails(code){
+    return this.BaseUrl+"product/details/"+code
+  }
+  static Notificaton = this.BaseUrl+'notification';
+  static SearchProduct(searchkey){
+    return this.BaseUrl+"search/"+searchkey;
+  }
 }
 
 export default ApiUrl

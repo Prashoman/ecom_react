@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import {Container,Row,Col,Card} from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 
 export default class SubCategoryProduct extends Component {
   render() {
@@ -10,6 +11,7 @@ export default class SubCategoryProduct extends Component {
     const ProductData = ProductList.map((DetailsProduct, i)=>{
         if(DetailsProduct.special_price=='null'){
             return   <Col className="p-0" xl={3} lg={3} md={3} sm={6} xs={6}>
+              <Link className="text-link" to={`/product-details/${DetailsProduct.id}`}>
             <Card className="image-box card w-100">
             <img className="center w-75" src={DetailsProduct.image} />   
             <Card.Body> 
@@ -18,13 +20,15 @@ export default class SubCategoryProduct extends Component {
 
             
             </Card.Body>
-            </Card>          
+            </Card> 
+            </Link>         
             </Col>
 
        }
        else{
 
             return   <Col className="p-0" xl={3} lg={3} md={3} sm={6} xs={6}>
+              <Link to={`/product-details/${DetailsProduct.id}`}>
             <Card className="image-box card w-100">
             <img className="center w-75" src={DetailsProduct.image} />   
             <Card.Body> 
@@ -32,7 +36,8 @@ export default class SubCategoryProduct extends Component {
             <p className="product-price-on-card">Price : <strike className="text-secondary">${DetailsProduct.price}</strike> ${DetailsProduct.special_price}</p>
 
             </Card.Body>
-            </Card>          
+            </Card> 
+            </Link>         
             </Col>
 
        } 

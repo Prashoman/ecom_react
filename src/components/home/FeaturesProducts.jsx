@@ -32,7 +32,7 @@ import FetureProductLoding from '../PlaceholderLoding/FetureProductLoding';
       if(product.special_price == 'null'){
         return(
               <Col className="p-1" key={i.toString()}  xl={2} lg={2} md={2} sm={4} xs={6}>
-              <Link to="/product-details">
+              <Link className="text-link" to={`/product-details/${product.id}`}>
                   <Card className="image-box card">
                         <img className="center" src={product.image} />   
                     <Card.Body> 
@@ -49,7 +49,7 @@ import FetureProductLoding from '../PlaceholderLoding/FetureProductLoding';
       }else{
         return(
           <Col className="p-1" key={i.toString()}  xl={2} lg={2} md={2} sm={4} xs={6}>
-          <Link to="/product-details">
+          <Link to={`/product-details/${product.id}`}>
               <Card className="image-box card">
                     <img className="center" src={product.image} />   
                 <Card.Body> 

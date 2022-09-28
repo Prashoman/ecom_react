@@ -2,8 +2,10 @@ import React, { Component, Fragment } from 'react'
 import { Container,Row,Col, Form,Button } from 'react-bootstrap'
 import axios from 'axios';
 import ApiUrl from '../../Api/ApiUrl';
-
+import Breadcrumb from 'react-bootstrap/Breadcrumb';
+import { Link } from 'react-router-dom';
 import parse from 'html-react-parser';
+
 
  class About extends Component {
     constructor(){
@@ -32,6 +34,16 @@ import parse from 'html-react-parser';
     return (
       <Fragment>
 <Container>
+    <div className='brodcamp'>
+    <Breadcrumb>
+      <Breadcrumb.Item ><Link to="/">Home</Link></Breadcrumb.Item>
+      <Breadcrumb.Item href="">
+        <Link to="/about">About</Link>
+      </Breadcrumb.Item>
+      
+    </Breadcrumb>
+    </div>
+
                     <Row className="p-2">
             <Col className="shadow-sm bg-white mt-2" md={12} lg={12} sm={12} xs={12}>
          <div className={this.state.loaderDiv}>

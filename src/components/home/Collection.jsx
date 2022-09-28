@@ -5,6 +5,7 @@ import {Container,Row,Col,Card} from 'react-bootstrap'
 import ApiUrl from '../../Api/ApiUrl';
 import axios from 'axios';
 import CollectionLoding from '../PlaceholderLoding/CollectionLoding';
+import { Link } from 'react-router-dom';
 
 class Collection extends Component {
      constructor(){
@@ -33,6 +34,7 @@ class Collection extends Component {
                if(CollectinList.special_price == 'null'){
                     return(
                          <Col key={i.toString} className="p-0" xl={3} lg={3} md={3} sm={6} xs={6}>
+                         <Link to={`/product-details/${CollectinList.id}`}>
                          <Card className="image-box card w-100">
                          <img className="center w-75" src={CollectinList.image} />   
                          <Card.Body> 
@@ -40,12 +42,14 @@ class Collection extends Component {
                          <p className="product-price-on-card">Price : ${CollectinList.price}</p>
                
                          </Card.Body>
-                         </Card>          
+                         </Card>   
+                         </Link>       
                          </Col>
                     )
                }else{
                     return(
                          <Col key={i.toString} className="p-0" xl={3} lg={3} md={3} sm={6} xs={6}>
+                         <Link className="text-link" to={`/product-details/${CollectinList.id}`}>
                          <Card className="image-box card w-100">
                          <img className="center w-75" src={CollectinList.image} />   
                          <Card.Body> 
@@ -53,7 +57,8 @@ class Collection extends Component {
                          <p className="product-price-on-card">Price : <strike className="text-secondary">${CollectinList.price}</strike> ${CollectinList.special_price}</p>
                
                          </Card.Body>
-                         </Card>          
+                         </Card>   
+                         </Link>       
                          </Col>
                     )
                }

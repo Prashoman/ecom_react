@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import ApiUrl from '../../Api/ApiUrl';
 import axios from 'axios';
 import NewArrivalLoding from '../PlaceholderLoding/NewArrivalLoding';
+import { Link } from 'react-router-dom';
 
 class NewArrival extends Component {
   constructor(props){
@@ -43,6 +44,7 @@ componentDidMount(){
         if(NewList.special_price == 'null'){
         return(
           <div key={i.toString()}>
+            <Link className="text-link" to={`/product-details/${NewList.id}`}>
           <Card className="image-box card">
           <img className="center" src={NewList.image} />   
           <Card.Body> 
@@ -51,11 +53,13 @@ componentDidMount(){
 
           </Card.Body>
           </Card>
+          </Link>
           </div>
         )
       }else{
         return(
           <div key={i.toString()}>
+            <Link to={`/product-details/${NewList.id}`}>
           <Card className="image-box card">
           <img className="center" src={NewList.image} />   
           <Card.Body> 
@@ -64,6 +68,7 @@ componentDidMount(){
 
           </Card.Body>
           </Card>
+          </Link>
           </div>
         )
       }

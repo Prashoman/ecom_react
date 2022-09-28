@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
      if(catlist.special_price == 'null'){
       return(
            <Col key={i.toString} className="p-0" xl={3} lg={3} md={3} sm={6} xs={6}>
+            <Link className="text-link" to={`/product-details/${catlist.id}`}>
            <Card className="image-box card w-100">
            <img className="center w-75" src={catlist.image} />   
            <Card.Body> 
@@ -18,12 +19,14 @@ import { Link } from 'react-router-dom';
            <p className="product-price-on-card">Price : ${catlist.price}</p>
  
            </Card.Body>
-           </Card>          
+           </Card>   
+           </Link>       
            </Col>
       )
  }else{
       return(
            <Col key={i.toString} className="p-0" xl={3} lg={3} md={3} sm={6} xs={6}>
+            <Link to={`/product-details/${catlist.id}`}>
            <Card className="image-box card w-100">
            <img className="center w-75" src={catlist.image} />   
            <Card.Body> 
@@ -31,7 +34,8 @@ import { Link } from 'react-router-dom';
            <p className="product-price-on-card">Price : <strike className="text-secondary">${catlist.price}</strike> ${catlist.special_price}</p>
  
            </Card.Body>
-           </Card>          
+           </Card> 
+           </Link>         
            </Col>
       )
  }

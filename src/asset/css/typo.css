@@ -44,3 +44,15 @@
     color: #051b35;
     font-weight: 400;
 }
+.text-link{
+    color: inherit;
+    text-decoration: inherit;
+}
+.brodcamp{
+    background-color: rgb(223, 225, 226);
+    padding: 15px;
+    border-radius: 5px;
+    padding-bottom: 5px;
+   font-weight: 900;
+   
+}

@@ -30,7 +30,7 @@ class Categorys extends Component {
                
                return(
                     <Col key={i.toString()} className="p-0" xl={2} lg={3} md={3} sm={4} xs={4}>
-                       <Link to={`/productcategory/${catlist.category_name}`}>  
+                       <Link className="text-link" to={`/productcategory/${catlist.category_name}`}>  
                          <Card className="h-100 w-100 text-center">          
                          <Card.Body> 
                          <img className="center" src={catlist.category_image} />  

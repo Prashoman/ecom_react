@@ -16,6 +16,7 @@ import PrivacyPage from '../page/PrivacyPage';
 import ProductDetails from '../page/ProductDetails';
 import PurchasePage from '../page/PurchasePage';
 import RefundPage from '../page/RefundPage';
+import SearchPage from '../page/SearchPage';
 import SubCategoryDetails from '../page/SubCategoryDetails';
 import UserLoginPage from '../page/UserLoginPage';
 
@@ -25,19 +26,26 @@ export class AppRoute extends Component {
       <Fragment>
         
         <Routes>
+          
+        
+        
+
+
         <Route path="/" element={<HomePage/>} />
+       
         <Route path="/login" element={<UserLoginPage/>} />
         <Route path="/contact-us" element={<ContactUs/>} />
         <Route path="/purchase" element={<PurchasePage/>} />
         <Route path="/privacy" element={<PrivacyPage/>} />
         <Route path="/refund" element={<RefundPage/>} />
-        <Route path="/product-details" element={<ProductDetails/>} />
+        <Route path="/product-details/:product_id" element={<ProductDetails/>} />
         <Route path="/notification" element={<NotificationPage/>} />
         <Route path="/faverate-item" element={<FevaratePage/>} />
         <Route path="/cart-items" element={<CartPage/>} />
         <Route path="/about" element={<AboutPage/>} />
         <Route path="/productcategory/:category" element={<CategoryDetailsPage/>} />
         <Route path="/productSubcategory/:category/:subcategory" element={<SubCategoryDetails/>} />
+        <Route path="/SearchProduct/:searchkey" element={<SearchPage/>} />
         
         
       </Routes>
